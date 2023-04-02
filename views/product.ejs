@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/output.css">
+    <script src="/scripts/IncDecItem.js" defer></script>
+    <script src="/scripts/cartScript.js" defer></script>
+    <script src="/scripts/mobileMenuToggle.js" defer></script>
+    <style>
+         a:hover path{
+        fill: #D87D4A;
+        transition: .3s ease-out;
+    }
+    </style>
+</head>
+<body>
+    <div id="backdrop" class="hidden fixed top-0 left-0 w-full h-full bg-black/20"></div>
+    <header class="relative bg-black">
+        <div class="pt-4 px-4 mx-auto max-w-6xl">
+            <div class="flex justify-between items-center border-b-[0.5px] border-white/20 pb-4">
+                <div class="flex space-x-6 lg:hidden">
+                    <div id="hamburger" class="lg:hidden hover:cursor-pointer">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                    <img src="/assets/SVGs/logo.svg" class="hidden md:block lg:hidden">
+                </div>
+                <img src="/assets/SVGs/logo.svg" class="md:hidden lg:block">
+                <div class="hidden lg:flex space-x-8 text-white mr-8">
+                    <a href="/" class="text-sm hover:text-darkPink duration-500">HOME</a>
+                    <a href="/products/speaker" class="text-sm hover:text-darkPink duration-500">SPEAKERS</a>
+                    <a href="/products/headphone" class="text-sm hover:text-darkPink duration-500">HEADPHONES</a>
+                    <a href="/products/earphone" class="text-sm hover:text-darkPink duration-500">EARPHONES</a>
+                </div>
+                <!-- CART -->
+               <%- include('include/cart.ejs') %>
+                <!-- END OF CART -->
+
+                <!-- mobile menu -->
+                <%- include('include/mobileMenu.ejs') %>
+                <!-- END OF MOBILE MENU -->
+            </div>
+        </div>
+    </header>
+
+    <section id="product-details">
+        <div class="max-w-6xl mx-auto px-4 my-32">
+
+            <div class="flex flex-col space-y-8 items-center justify-between md:flex-row md:space-y-0">
+                <img src="<%= product.dataValues.images[0].url %>" alt="" class="lg:w-1/2 lg:h-full md:h-[32rem] md:w-1/2 w-full">
+                <div class="flex flex-col items-center justify-start md:justify-between md:items-start">
+                    <% if(product.dataValues.isNew == 'YES'){ %>
+                        <p class="text-darkPink tracking-widest mb-4">NEW PRODUCT</p>
+                        <% } %>
+                    <h2 class="text-4xl text-center md:text-left max-w-sm mb-6"><%= product.dataValues.name %></h2>
+                    <p class="mb-8 text-center md:text-left max-w-xs"><%= product.dataValues.description %></p>
+                    <p class="font-bold text-lg">$<%= product.dataValues.price %></p>
+                    <div class="flex flex-row space-x-2 mt-4">
+                        <div class="flex flex-row justify-between items-center space-x-6 bg-itemBg px-2 py-2">
+                            <button id="decrement-item" class="text-gray-700/50" data-productid="<%= product.dataValues.id %>">-</button>
+                            <p id="item-quantity" class="text-sm">1</p>
+                            <button id="increment-item" class="text-gray-700/50" data-productid="<%= product.dataValues.id %>">+</button>
+                        </div>
+                        <button id="add-to-cart" class=" text-sm tracking-tight bg-darkPink text-white px-4 py-2 hover:bg-pink duration-500" data-productid=<%= product.dataValues.id %>>ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="features" class="flex flex-col space-y-8 lg:flex-row lg:space-y-0  items-start justify-between mt-32 w-[90%]">
+
+                <div>
+                    <h2 class="text-3xl font-bold mb-8">FEATURES</h2>
+                    <p class="max-w-md md:max-w-full lg:max-w-md text-gray-700/70"><%= product.dataValues.features %></p>
+                </div>
+
+                <div class="md:w-full lg:w-auto">
+                    <div class="flex flex-col md:flex-row lg:flex-col space-y-4 items-start justify-between">
+                        <h2 class="text-3xl font-bold">IN THE BOX</h2>
+                        <div class="flex flex-col space-y-2">
+                            <% for(const item of product.dataValues.items){ %>
+                                <div>
+                                    <span class="text-darkPink"><%= item.quant %>x</span>
+                                    <span class="ml-6"><%= item.title %></span>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="photos" class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mt-32">
+                <div class="flex flex-col space-y-4">
+                    <img src="<%= product.dataValues.images[1].url %>" alt="" class="rounded">
+                    <img src="<%= product.dataValues.images[2].url %>" alt="" class="h-full rounded">
+                </div>
+                <div>
+                    <img src="<%= product.dataValues.images[3].url %>" alt="" class="rounded">
+                </div>
+            </div>
+
+            <!-- suggested products -->
+            <div class="mt-32">
+                <h2 class="text-center text-2xl font-bold mb-8">YOU MAY ALSO LIKE</h2>
+                <div id="suggestions" class="flex flex-col md:flex-row space-y-16 md:space-y-0 md:space-x-10 items-start justify-center md:space-x-0">
+                    <% for(const suggestion of suggestions){ %>
+                        <div class="flex flex-col space-y-4 items-center">
+                            <img src="<%= suggestion.images[0].url %>" alt="" class="w-full ">
+                            <h2 class="text-3xl text-center font-bold"><%= suggestion.slug %></h2>
+                            <a href="/product/<%= suggestion.id %>" class="bg-darkPink text-white text-sm px-4 py-2 max-w-fit hover:bg-pink duration-500">SEE PRODUCT</a>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <%- include('include/shop.ejs') %>
+
+    <section id="Gear">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col space-y-12 lg:flex-row-reverse lg:space-y-0 items-center justify-center my-8">
+                <img src="/assets/images/image-best-gear.jpg" alt="" class="flex-1 w-full">
+                <div class="flex flex-col space-y-4 items-center lg:items-start flex-1">
+                    <h2 class="text-4xl text-center lg:text-left max-w-sm">BRINGING YOU THE <span class="text-darkPink">BEST</span>AUDIO GEAR</h2>
+                    <p class="max-w-md text-center lg:text-left">
+                        Located at the heart of New York City, Audiophile 
+                        is the premier store for high end headphones, earphones, speakers, and
+                        audio accessories. We have a large showroom and luxury 
+                        demonstration rooms available for you to browse and 
+                        experience a wide range of our products. Stop by our
+                        store to meet some of the fantastic people who make
+                        Audiophile the best place to buy your
+                        portable audio equipment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <%- include('include/footer.ejs') %>
+
+</body>
+</html>

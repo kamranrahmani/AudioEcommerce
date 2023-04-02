@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/output.css">
+  <script src="/scripts/mobileMenuToggle.js" defer></script>
+  <style>
+     a:hover path{
+        fill: #D87D4A;
+        transition: .3s ease-out;
+    }
+    #thankyou{
+      position: absolute;
+        top: 50%;  
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body class="bg-itemBg">
+  
+  <div id="backdrop" class="hidden fixed left-0 top-0 w-full h-full bg-black/20"></div>
+  <header class="bg-black">
+    <div class="pt-4 px-4 mx-auto max-w-6xl">
+        <div class="flex justify-between items-center border-b-[0.5px] border-white/20 pb-4">
+            <div class="flex space-x-6 lg:hidden">
+                <div id="hamburger" class="lg:hidden hover:cursor-pointer">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                <img src="/assets/SVGs/logo.svg" class="hidden md:block lg:hidden">
+            </div>
+            <img src="/assets/SVGs/logo.svg" class="md:hidden lg:block">
+            <div class="hidden lg:flex space-x-8 text-white mr-8">
+                <a href="/" class="text-sm hover:text-darkPink duration-500">HOME</a>
+                <a href="/products/speaker" class="text-sm hover:text-darkPink duration-500">SPEAKERS</a>
+                <a href="/products/headphone" class="text-sm hover:text-darkPink duration-500">HEADPHONES</a>
+                <a href="/products/earphone" class="text-sm hover:text-darkPink duration-500">EARPHONES</a>
+            </div>
+            <div></div>
+        </div>
+    </div>
+    <%- include('include/mobileMenu.ejs') %>
+</header>
+
+<!-- thank you for your purchase -->
+
+<% if(locals.orderStatus.paymentSuccess) {%>
+<div class="fixed left-0 top-0 w-full h-full bg-black/20"></div>
+<div id="thankyou" class="absolute p-8 mx-auto top-1/2 left-0 right-0 rounded bg-white">
+  <h1 class="text-3xl font-bold">Thank you for your order</h1>
+  <p class="mt-8">your order number is:<span class="ml-4 font-bold text-lg text-darkPink"><%= locals.orderStatus.orderid %></span></p>
+  <a href="/" class="block bg-darkPink w-full text-white text-center mt-8 px-4 py-2 hover:bg-pink">Back to Home</a>
+</div>
+<% } %>
+
+<section id="client-details-summary">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-8 justify-center items-start my-32">
+
+      <div class="px-8 py-12 bg-white rounded-lg flex-1 w-full">
+        <div id="client-details" class="w-full">
+          <h1 class="text-2xl font-bold mb-8">CHECKOUT</h1>
+          <form action="/checkout/pay" method="POST" id="client-data">
+  
+            <div>
+              <p class="text-md font-bold text-darkPink my-4">BILLING DETAILS</p>
+              <div id="billing-address" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex flex-col space-y-2 items-start">
+                  <label for="name" class="font-bold">Name</label>
+                  <input type="text" id="name" name="name" placeholder="Name" class="p-4 border-2 rounded-lg w-full focus:outline-darkPink" required> 
+                </div>
+                <div class="flex flex-col space-y-2 items-start">
+                  <label for="Email" class="font-bold">Email Address</label>
+                  <input required type="text" id="Email" name="email" placeholder="exmaple@google.com" class="p-4 border-2 rounded-lg w-full focus:outline-darkPink">
+                </div>
+                <div class="flex flex-col space-y-2 items-start">
+                  <label for="PhoneNumber" class="font-bold">Phone Number</label>
+                  <input required type="text" id="PhoneNumber" name="phone" placeholder="+1 514-256-1265" class="p-4 border-2 rounded-lg w-full focus:outline-darkPink">
+                </div>
+              </div>
+            </div>
+  
+  
+            <div id="shpping-info" class="my-16">
+              <div>
+                <p class="text-md font-bold text-darkPink my-4">SHIPPING INFO</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="flex flex-col space-y-2 items-start md:col-span-2">
+                    <label for="address" class="font-bold">Address</label>
+                    <input required type="text" name="address" id="address" class="p-4 border-2 rounded-lg w-full focus:outline-darkPink" placeholder="1137 william Avenue">
+                  </div>
+                  <div class="flex flex-col space-y-2 items-start">
+                    <label for="zipcode" class="font-bold">ZIP CODE</label>
+                    <input required type="text" id="zipcode" name="zipcode" class="p-4 border-2 rounded-lg w-full focus:outline-darkPink" placeholder="10001">
+                  </div>
+                  <div class="flex flex-col space-y-2 items-start">
+                    <label for="city" class="font-bold">City</label>
+                    <input required type="text" id="city" name="city" class="p-4 border-2 rounded-lg w-full focus:outline-darkPink" placeholder="New York">
+                  </div>
+                  <div class="flex flex-col space-y-2 items-start">
+                    <label for="country" class="font-bold">Country</label>
+                    <input required type="text" id="country" name="country" class="p-4 border-2 rounded w-full focus:outline-darkPink" placeholder="United states">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <div id="summary" class="py-12 px-8 bg-white rounded-lg w-full lg:w-1/3">
+        <h1 class="text-xl font-bold my mb-8">SUMMARY</h1>
+        <div class="flex flex-col space-y-8 justify-between items-center">
+
+          <% for(const key in summary){ %>
+          <div class="flex flex-row justify-between items-center w-full">
+            <div class="flex flex-row space-x-2 items-center">
+              <img src="<%= summary[key].item.image %>" alt="" class="w-16 h-16 rounded">
+              <div>
+                <h3 class="text-sm font-bold"><%= summary[key].item.name %></h3>
+                <p class="text-xs">$<%= summary[key].price %></p>
+              </div>
+            </div>
+            <p>x<%= summary[key].quantity %></p>
+          </div>
+          <% } %>
+          <!-- total -->
+          <div class="flex flex-col space-y-2 w-full">
+            <div class="flex flex-row justify-between items-center">
+              <h3 class="text-gray-700/50 text-sm">TOTAL</h3>
+              <p class="text-md font-bold">$ <%= expense.total %></p>
+            </div>
+            <div class="flex flex-row justify-between items-center">
+              <h3 class="text-gray-700/50 text-sm">SHIPPING</h3>
+              <p class="text-md font-bold">$ <%= expense.shipping %></p>
+            </div>
+            <div class="flex flex-row justify-between items-center">
+              <h3 class="text-gray-700/50 text-sm">GST</h3>
+              <p class="text-md font-bold">$ <%= expense.GST %></p>
+            </div>
+            <div class="flex flex-row justify-between items-center">
+              <h3 class="text-gray-700/50 text-sm">PST</h3>
+              <p class="text-md font-bold">$ <%= expense.PST %></p>
+            </div>
+          </div>
+
+          <div class="flex flex-row justify-between items-center w-full">
+            <h3 class="text-gray-700/50 text-sm">GRAND TOTAL</h3>
+            <p class="text-md font-bold text-darkPink">$ <%= expense.grandTotal %></p>
+          </div>
+
+          <input type="submit" class="w-full py-4 font-bold text-white px-4 bg-darkPink hover:cursor-pointer hover:bg-pink text-sm" form="client-data" value="CONTINUE & PAY">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('include/footer.ejs') %>
+
+</body>
+</html>

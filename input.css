@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+#hero{
+    background-image: url('../assets/images/image-hero.jpg');
+    background-position: bottom;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+}
+
+@media (max-width: 1024px){
+    #hero{
+        background-attachment: fixed;
+        background-position: 83% 100%;
+    }
+}
+
+@media (max-width: 640px){
+    #hero{
+        background-attachment: fixed;
+        background-position-x: 76%;
+    }
+}
+
+#ZX7{
+    background-image: url('../assets/images/image-speaker-zx7.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+
+.bar1, .bar2, .bar3{
+    width: 25px;
+    height: 2px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+  }
+  
+.change .bar2 {opacity: 0;}
+  
+.change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+  }
+
+@media(min-width: 1024px){
+    #products li:nth-child(2n){
+        flex-direction: row-reverse;
+    }
+}
+
+#products li{
+    margin-bottom: 5rem;
+}
+
+
+
+
+

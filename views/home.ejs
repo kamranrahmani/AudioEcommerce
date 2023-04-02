@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/output.css">
+    <script src="/scripts/cartScript.js" defer></script>
+    <script src="/scripts/mobileMenuToggle.js" defer></script>
+</head>
+<style>
+    a:hover path{
+        fill: #D87D4A;
+        transition: .3s ease-out;
+    }
+</style>
+<body>
+    <div id="backdrop" class="hidden fixed top-0 left-0 w-full h-full bg-black/20"></div>
+    <!-- header -->
+    <header class="bg-black">
+        <div class="pt-4 px-4 mx-auto max-w-6xl">
+            <div class="flex justify-between items-center border-b-[0.5px] border-white/20 pb-4">
+                <div class="flex space-x-6 lg:hidden">
+                    <div id="hamburger" class="lg:hidden hover:cursor-pointer">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                    <img src="/assets/SVGs/logo.svg" class="hidden md:block lg:hidden">
+                </div>
+                <img src="/assets/SVGs/logo.svg" class="md:hidden lg:block">
+                <div class="hidden lg:flex space-x-8 text-white mr-8">
+                    <a href="/" class="text-sm hover:text-darkPink duration-500">HOME</a>
+                    <a href="/products/speaker" class="text-sm hover:text-darkPink duration-500">SPEAKERS</a>
+                    <a href="/products/headphone" class="text-sm hover:text-darkPink duration-500">HEADPHONES</a>
+                    <a href="/products/earphone" class="text-sm hover:text-darkPink duration-500">EARPHONES</a>
+                </div>
+                 <!-- CART -->
+                <%- include('include/cart.ejs') %>
+                <!-- END OF CART -->
+                <%- include('include/mobileMenu.ejs') %>
+            </div>
+        </div>
+    </header>
+    <!-- hero -->
+    <section id="hero">
+        <div class="px-4 py-28 h-[650px] max-w-6xl mx-auto ">
+            
+            <div class="flex flex-col space-y-6  items-center lg:items-start mx-auto">
+                <div class="flex flex-row space-x-4 text-gray-700">
+                   <p class="tracking-widest">NEW</p>
+                   <p class="tracking-widest">PRODUCT</p>
+                </div>
+                <h2 class="text-6xl text-white text-center lg:text-left font-bold max-w-xl">
+                    XX99 MARK || HEADPHONE
+                </h2>
+                <p class="text-white text-md max-w-xs text-center lg:text-left leading-6">Experience natural, lifelike audio and exceptional build quality made for the passionate music</p>
+                <div>
+                    <a href="/product/4" class="bg-darkPink py-3 px-4 text-white tracking-normal text-xs hover:bg-pink duration-500">SEE PRODUCT</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('include/shop.ejs') %>
+
+    <section id="products">
+        <div class="max-w-6xl mx-auto px-4">
+            
+          <div class="flex flex-col lg:flex-row items-center justify-evenly w-full bg-darkPink rounded pt-16">
+            <img src="/assets/images/image-category-thumbnail-speakers.png" alt="" class="relative lg:top-20 w-[32rem] -mb-16">
+            <div class="flex flex-col items-center md:items-start space-y-8 text-white self-center p-4 mt-8">
+                <h2 class="text-5xl max-w-xs">ZX9 SPEAKER</h2>
+                <p class="leading-7 max-w-xs text-center lg:text-left">Upgrade to premium speakers that are phnomenally built to deliver truly remarkable sound</p>
+                <div class="text-center lg:text-left w-full p-4 lg:p-0">
+                    <a href="/product/6" class="bg-black text-xs p-4 tracking-normal max-w-fit hover:bg-gray-600 duration-500"> SEE PRODUCT</a>
+                </div>
+            </div>
+          </div>
+
+          <div id="ZX7" class="flex justify-start my-8 py-32 w-full rounded">
+            <div class="flex flex-col  space-y-4 ml-8">
+                <h2 class="text-2xl md:text-4xl tracking-normal">ZX7 SPEAKER</h2>
+                <a href="/product/5" class="text-center text-sm tracking-tight border-2 border-black px-2 py-2 max-w-fit hover:bg-black hover:text-white duration-500">SEE PRODUCT</a>
+            </div>
+          </div>
+           
+            <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+                <img src="/assets/images/image-earphones-yx1.jpg" alt="" class="rounded">
+                <div class="flex flex-col justify-center space-y-4 w-full pl-8 py-4 bg-itemBg flex-1 rounded">
+                    <h2 class="text-2xl lg:text-4xl lg:text-left tracking-normal">YX1 EARPHONE</h2>
+                    <a href="/product/1" class="bg-transparent px-4 py-2 max-w-fit border-2 border-black hover:bg-black hover:text-white duration-500">SEE PRODUCT</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col space-y-12 lg:flex-row-reverse lg:space-y-0 items-center justify-center my-8">
+                <img src="/assets/images/image-best-gear.jpg" alt="" class="flex-1 w-full">
+                <div class="flex flex-col space-y-4 items-center lg:items-start flex-1">
+                    <h2 class="text-4xl text-center lg:text-left max-w-sm">BRINGING YOU THE <span class="text-darkPink">BEST</span>AUDIO GEAR</h2>
+                    <p class="max-w-md text-center lg:text-left">
+                        Located at the heart of New York City, Audiophile 
+                        is the premier store for high end headphones, earphones, speakers, and
+                        audio accessories. We have a large showroom and luxury 
+                        demonstration rooms available for you to browse and 
+                        experience a wide range of our products. Stop by our
+                        store to meet some of the fantastic people who make
+                        Audiophile the best place to buy your
+                        portable audio equipment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('include/footer.ejs') %>
+</body>
+</html>

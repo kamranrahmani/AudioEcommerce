@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/output.css">
+    <script src="/scripts/productform.js" defer></script>
+    <script src="/scripts/mobileMenuToggle.js" defer></script>
+    <title>product form</title>
+</head>
+<body class="bg-itemBg">
+    <div id="backdrop" class="hidden fixed left-0 top-0 w-screen h-full bg-black/40"></div>
+    <header class="bg-black">
+        <div class="pt-4 px-4 mx-auto max-w-6xl">
+            <div class="flex justify-between items-center border-b-[0.1px] border-white/20 pb-4">
+                <div class="flex space-x-6 lg:hidden">
+                    <div id="hamburger" class="lg:hidden hover:cursor-pointer">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                    <img src="/assets/SVGs/logo.svg" class="hidden md:block lg:hidden">
+                </div>
+                <img src="/assets/SVGs/logo.svg" class="md:hidden lg:block">
+                <div class="hidden lg:flex space-x-8 text-white mr-8">
+                    <a href="/" class="text-sm hover:text-darkPink duration-500">HOME</a>
+                    <a href="/products/speaker" class="text-sm hover:text-darkPink duration-500">SPEAKERS</a>
+                    <a href="/products/headphone" class="text-sm hover:text-darkPink duration-500">HEADPHONES</a>
+                    <a href="/products/earphone" class="text-sm hover:text-darkPink duration-500">EARPHONES</a>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+
+    <section id="upload-section">
+       
+            
+            <form id="itemDetails" class="hidden fixed mx-auto top-1/3 left-1/3 px-4 py-2 bg-itemBg">
+                <p>product details</p>
+                <div class="flex flex-row space-x-4 items-center my-4">
+                    <input type="text" id="itemname" class="px-2 py-1 focus:outline-0 rounded" placeholder="Title" required>
+                    <input type="text" id="itemquant" class="px-2 py-1 focus:outline-0 rounded" placeholder="Quantity" required>
+                </div>
+                <div class="flex space-x-4 items-center justify-center">
+                    <button id="add" type="button" class="px-2 py-1 text-blue-500 border-2 border-blue-500/50 rounded">Add</button>
+                    <button id="cancel" type="button" class="px-2 py-1 text-red-500 border-2 border-red-500/50 rounded">Cancel</button>
+                </div>
+            </form>
+        
+
+        <div class="px-4 mx-auto max-w-2xl">
+            <div class="flex items-center justify-center my-16 w-full">
+                <form action="/products/addProduct" class="bg-white rounded-lg p-8 flex-1" method="POST" enctype="multipart/form-data">
+                    <div class="w-full flex- flex-col space-y-4">
+                        <div class="flex flex-col space-y-2 items-start">
+                            <label for="name" class="font-bold">name</label>
+                            <input type="text" name="name" id="name" class="border-2 w-full px-4 py-2 rounded focus:outline-darkPink" >
+                        </div>
+                        <div class="flex flex-col space-y-2  items-start">
+                            <label for="slug" class="font-bold">slug</label>
+                            <input type="text" name="slug" id="slug" class="border-2 w-full px-4 py-2 rounded focus:outline-darkPink" >
+                        </div>
+                        <div class="flex flex-col space-y-2  items-start">
+                            <label for="category" class="font-bold">category</label>
+                            <select name="category" id="category" class="border-2 w-full px-2 py-2 rounded focus:outline-darkPink" >
+                                <option value="headphone">headphone</option>
+                                <option value="speaker">speaker</option>
+                                <option value="earphone">earphone</option>
+                            </select>
+                            
+                        </div>
+                        <div class="flex flex-col space-y-2  items-start">
+                            <label for="price" class="font-bold">price</label>
+                            <input type="number" name="price" id="price" class="border-2 w-full px-4 py-2 rounded focus:outline-darkPink" >
+                        </div>
+                        <div class="flex flex-col space-y-2  items-start">
+                            <label for="newitem" class="font-bold">new Item</label>
+                            <select name="newitem" id="newitem" class="border-2 w-full px-4 py-2 rounded focus:outline-darkPink">
+                                <option value="YES">yes</option>
+                                <option value="NO">no</option>
+                            </select>
+                        </div>
+
+                        <div class="flex flex-col space-y-2 items-start">
+                            <label for="description" class="font-bold">description</label>
+                            <textarea name="description" id="description" cols="30" rows="5" class="border-2 w-full px-4 py-2 rounded focus:outline-darkPink"></textarea>
+                        </div>
+
+                        <div class="flex flex-col space-y-2 items-start">
+                            <label for="features" class="font-bold">features</label>
+                            <textarea name="features" id="features" cols="30" rows="5" class="border-2 w-full px-4 py-2 rounded focus:outline-darkPink"></textarea>
+                        </div>
+                        <hr>
+
+                        <fieldset id="items"></fieldset>
+                        
+                        <button id="additem" type="button" class="block w-full bg-blue-500 border-2 px-4 py-2 rounded text-white hover:bg-white hover:border-blue-500 hover:border-2 hover:text-blue-500 duration-200">Add items</button>
+
+                        <div>
+                            <label for="images" class="block text-center bg-blue-500 px-4 py-2 text-white border-2 border-blue-500 rounded hover:cursor-pointer hover:bg-white hover:text-blue-500 duration-200">Images</label>
+                            <input type="file" name="images" multiple class="hidden" id="images">
+                        </div>
+
+                    </div>
+                    <button class="block w-full text-center py-2 bg-darkPink text-white my-8 rounded hover:bg-pink">Add product</button>
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+</html>

@@ -20,7 +20,6 @@ async function addProduct(req,res,next) {
             const uploadTask = imageFiles.map(image => new Promise((resolve,reject)=>{
                 let extArray = image.mimetype.split('/');
                 let filename = Date.now() + '-' + uuid.v4() +'.'+extArray[extArray.length - 1];
-                console.log(filename);
                 const blob = bucket.file(filename);
                 const blobStream = blob.createWriteStream();
                 let imageurl = {

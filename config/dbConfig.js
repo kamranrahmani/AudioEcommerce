@@ -1,9 +1,9 @@
 require('dotenv').config()
 module.exports = {
-    host: process.env.HOST,
-    db: process.env.DB,
-    username: process.env.USERNAME,
-    password:process.env.PASSWORD,
+    host: 'localhost',
+    db: 'audioecommerce',
+    username: 'root',
+    password:'kamran911',
     dialect: "mysql"
   };
   

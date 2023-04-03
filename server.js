@@ -39,6 +39,7 @@ app.use(auth({
 }));
 
 app.use((req,res,next)=>{
+    console.log(req.get('host'));
     if(!req.session.cart) {
         req.session.cart = {};
         req.session.save(()=>{

@@ -33,7 +33,7 @@ function getCheckOut(req,res,next){
 
 
 async function payment(req,res,next){
-    
+    const host = req.get('host');
     const customer_info = req.body;
     req.session.customer_info = customer_info;
     req.session.save(function(){
@@ -48,8 +48,8 @@ async function payment(req,res,next){
           },
         ],
         mode: 'payment',
-        success_url: 'http://localhost:3000/checkout/success/',
-        cancel_url: 'http://localhost:3000/checkout/cancel/',
+        success_url: `http://${host}/checkout/success/`,
+        cancel_url: `http://${host}/checkout/cancel/`,
       });
       res.redirect(303, session.url);
 

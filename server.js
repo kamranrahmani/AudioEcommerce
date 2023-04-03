@@ -39,10 +39,20 @@ app.use(auth({
 }));
 
 app.use((req,res,next)=>{
+
     if(!req.session.cart) {
         req.session.cart = {};
         req.session.save(()=>{
-            next();
+            return
+        })
+    }
+    if(!req.session.orderStatus){
+        req.session.orderStatus = {
+            paymentSuccess : false,
+            orderid : ''
+        }
+        req.session.save(function(){
+            return
         })
     }
     next();

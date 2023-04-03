@@ -46,10 +46,12 @@ async function addProduct(req,res,next) {
                 const savedProduct = await db.products.create(product);
                 return res.redirect('/');
             }).catch(err=>{
+                console.log('product creation error ' + err);
                 next(err);
             })
 
         } catch (error) {
+            console.log('function error '+ error);
             next(new Error('an error happened while saving the product'));
         }
     })

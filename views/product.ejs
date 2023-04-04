@@ -54,7 +54,7 @@
         <div class="max-w-6xl mx-auto px-4 my-32">
 
             <div class="flex flex-col space-y-8 items-center justify-between md:flex-row md:space-y-0">
-                <img src="<%= product.dataValues.images[0].url %>" alt="" class="lg:w-1/2 lg:h-full md:h-[32rem] md:w-1/2 w-full" crossorigin>
+                <img src="<%= product.dataValues.images[0].url %>" alt="" class="lg:w-1/2 lg:h-full md:h-[32rem] md:w-1/2 w-full">
                 <div class="flex flex-col items-center justify-start md:justify-between md:items-start">
                     <% if(product.dataValues.isNew == 'YES'){ %>
                         <p class="text-darkPink tracking-widest mb-4">NEW PRODUCT</p>
@@ -97,11 +97,11 @@
             
             <div id="photos" class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mt-32">
                 <div class="flex flex-col space-y-4">
-                    <img src="<%= product.dataValues.images[1].url %>" alt="" class="rounded" crossorigin="">
-                    <img src="<%= product.dataValues.images[2].url %>" alt="" class="h-full rounded" crossorigin>
+                    <img src="<%= product.dataValues.images[1].url %>" alt="" class="rounded">
+                    <img src="<%= product.dataValues.images[2].url %>" alt="" class="h-full rounded">
                 </div>
                 <div>
-                    <img src="<%= product.dataValues.images[3].url %>" alt="" class="rounded" crossorigin>
+                    <img src="<%= product.dataValues.images[3].url %>" alt="" class="rounded">
                 </div>
             </div>
 
@@ -111,7 +111,7 @@
                 <div id="suggestions" class="flex flex-col md:flex-row space-y-16 md:space-y-0 md:space-x-10 items-start justify-center md:space-x-0">
                     <% for(const suggestion of suggestions){ %>
                         <div class="flex flex-col space-y-4 items-center">
-                            <img src="<%= suggestion.images[0].url %>" alt="" class="w-full " crossorigin>
+                            <img src="<%= suggestion.images[0].url %>" alt="" class="w-full ">
                             <h2 class="text-3xl text-center font-bold"><%= suggestion.slug %></h2>
                             <a href="/product/<%= suggestion.id %>" class="bg-darkPink text-white text-sm px-4 py-2 max-w-fit hover:bg-pink duration-500">SEE PRODUCT</a>
                         </div>

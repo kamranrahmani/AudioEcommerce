@@ -49,7 +49,7 @@
 
             <% for(const item of fetched){ %>
                 <li class="flex flex-col items-center justify-between space-y-6 lg:flex-row lg:space-y-0 lg:space-x-8">
-                    <img src=<%= item.dataValues.images[0].url %> alt="" class="lg:w-1/2 lg:h-full md:h-[32rem] w-full" crossorigin>
+                    <img src=<%= item.dataValues.images[0].url %> alt="" class="lg:w-1/2 lg:h-full md:h-[32rem] w-full">
                     <div class="flex flex-col items-center justify-start lg:items-start">
                         <% if(item.dataValues.isNew == 'YES'){ %>
                             <p class="text-darkPink tracking-widest mb-4">NEW PRODUCT</p>

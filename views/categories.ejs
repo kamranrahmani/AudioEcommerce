@@ -54,7 +54,7 @@
                         <% if(item.dataValues.isNew == 'YES'){ %>
                             <p class="text-darkPink tracking-widest mb-4">NEW PRODUCT</p>
                         <% } %>
-                        <h2 class="text-4xl text-center lg:text-left max-w-sm mb-6">XX99 MARK || HEADPHONES</h2>
+                        <h2 class="text-4xl text-center lg:text-left max-w-sm mb-6"><%= item.dataValues.name %></h2>
                         <p class="mb-8 text-center lg:text-left max-w-xs md:max-w-md lg:max-w-xs"><%= item.dataValues.description %></p>
                         <a href="/product/<%= item.dataValues.id %>" class="bg-darkPink max-w-fit px-4 py-2 text-white tracking-tight hover:bg-pink duration-500">SEE PRODUCT</a>
                     </div>

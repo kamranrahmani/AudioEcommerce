@@ -27,6 +27,10 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     saveUninitialized:false,
     store:store,
+    cookie:{
+        sameSite: 'none',
+        secure: 'auto'
+    }
 }));
 
 app.use(auth({

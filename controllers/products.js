@@ -23,7 +23,7 @@ async function addProduct(req,res,next) {
                 const blob = bucket.file(filename);
                 const blobStream = blob.createWriteStream();
                 let imageurl = {
-                    url : `https://storage.cloud.google.com/audio-image-storage/${blob.name}`
+                    url : `https://storage.googleapis.com/audio-image-storage/${blob.name}`
                 }
                 uploadedImages.push(imageurl);
                 blobStream.on('finish',resolve);
